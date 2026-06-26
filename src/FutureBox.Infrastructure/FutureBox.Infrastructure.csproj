@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FutureBox.Application\FutureBox.Application.csproj" />
+    <ProjectReference Include="..\FutureBox.Domain\FutureBox.Domain.csproj" />
+    <ProjectReference Include="..\FutureBox.Shared\FutureBox.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -24,7 +24,7 @@ Update this file after completing significant milestones or architectural change
 ### Architecture Decisions Recorded
 
 - ADR-001: Clean Architecture with strict dependency rules
-- ADR-002: .NET 9 backend (Minimal APIs)
+- ADR-002: .NET 10 backend (Minimal APIs)
 - ADR-003: ~~SQLite for MVP~~ → replaced by ADR-008
 - ADR-004: SignalR as real-time communication layer
 - ADR-005: Separate Agent and Tool concepts
@@ -37,7 +37,7 @@ Update this file after completing significant milestones or architectural change
 
 | Layer | Technology |
 |---|---|
-| Backend | ASP.NET Core Minimal APIs (.NET 9, C#) |
+| Backend | ASP.NET Core Minimal APIs (.NET 10, C#) |
 | API Docs | Swagger / OpenAPI |
 | Real-time | SignalR |
 | Frontend | React + Vite + Tailwind + Font Awesome Free |

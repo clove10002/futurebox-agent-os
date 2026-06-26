@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+    <PackageReference Include="Swashbuckle.AspNetCore" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FutureBox.Application\FutureBox.Application.csproj" />
+    <ProjectReference Include="..\FutureBox.Infrastructure\FutureBox.Infrastructure.csproj" />
+    <ProjectReference Include="..\FutureBox.Shared\FutureBox.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,10 @@
+﻿namespace FutureBox.Tools.Http.Tests;
+
+public class UnitTest1
+{
+    [Fact]
+    public void Test1()
+    {
+
+    }
+}

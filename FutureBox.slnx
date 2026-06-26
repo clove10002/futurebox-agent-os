@@ -1,0 +1,31 @@
+<Solution>
+  <Folder Name="/agents/">
+    <Project Path="agents/FutureBox.Agents.Asset/FutureBox.Agents.Asset.csproj" />
+    <Project Path="agents/FutureBox.Agents.Narration/FutureBox.Agents.Narration.csproj" />
+    <Project Path="agents/FutureBox.Agents.Research/FutureBox.Agents.Research.csproj" />
+    <Project Path="agents/FutureBox.Agents.Script/FutureBox.Agents.Script.csproj" />
+    <Project Path="agents/FutureBox.Agents.Subtitle/FutureBox.Agents.Subtitle.csproj" />
+    <Project Path="agents/FutureBox.Agents.Video/FutureBox.Agents.Video.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/FutureBox.Api/FutureBox.Api.csproj" />
+    <Project Path="src/FutureBox.Application/FutureBox.Application.csproj" />
+    <Project Path="src/FutureBox.Domain/FutureBox.Domain.csproj" />
+    <Project Path="src/FutureBox.Infrastructure/FutureBox.Infrastructure.csproj" />
+    <Project Path="src/FutureBox.Shared/FutureBox.Shared.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/FutureBox.Agents.Research.Tests/FutureBox.Agents.Research.Tests.csproj" />
+    <Project Path="tests/FutureBox.Application.Tests/FutureBox.Application.Tests.csproj" />
+    <Project Path="tests/FutureBox.Domain.Tests/FutureBox.Domain.Tests.csproj" />
+    <Project Path="tests/FutureBox.Infrastructure.Tests/FutureBox.Infrastructure.Tests.csproj" />
+    <Project Path="tests/FutureBox.Tools.Http.Tests/FutureBox.Tools.Http.Tests.csproj" />
+  </Folder>
+  <Folder Name="/tools/">
+    <Project Path="tools/FutureBox.Tools.FFmpeg/FutureBox.Tools.FFmpeg.csproj" />
+    <Project Path="tools/FutureBox.Tools.File/FutureBox.Tools.File.csproj" />
+    <Project Path="tools/FutureBox.Tools.Http/FutureBox.Tools.Http.csproj" />
+    <Project Path="tools/FutureBox.Tools.Llm/FutureBox.Tools.Llm.csproj" />
+    <Project Path="tools/FutureBox.Tools.Tts/FutureBox.Tools.Tts.csproj" />
+  </Folder>
+</Solution>

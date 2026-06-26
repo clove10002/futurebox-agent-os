@@ -104,7 +104,7 @@ Full MVC controllers add ceremony (controller classes, action methods, routing a
 
 ### Decision
 
-**ASP.NET Core Minimal APIs (.NET 9).**
+**ASP.NET Core Minimal APIs (.NET 10).**
 
 - Minimal boilerplate — endpoints defined inline or in extension methods
 - Swagger/OpenAPI generated automatically via `Microsoft.AspNetCore.OpenApi`
@@ -158,7 +158,7 @@ Without defined architectural boundaries, business logic and infrastructure conc
 
 ---
 
-## ADR-002 — Use .NET 9 and Blazor Web App
+## ADR-002 — Use .NET 10 and Blazor Web App
 
 **Date:** 2026-06-26  
 **Status:** Accepted
@@ -173,13 +173,13 @@ Choosing a UI framework that requires a separate language/runtime increases comp
 
 ### Options Considered
 
-1. .NET 9 + Blazor Web App (full-stack C#)
-2. .NET 9 + React/TypeScript frontend
-3. .NET 9 + Electron for desktop-first
+1. .NET 10 + Blazor Web App (full-stack C#)
+2. .NET 10 + React/TypeScript frontend
+3. .NET 10 + Electron for desktop-first
 
 ### Decision
 
-**.NET 9 + Blazor Web App** (Server-side interactive rendering with SignalR).
+**.NET 10 + Blazor Web App** (Server-side interactive rendering with SignalR).
 
 - Single language across the entire stack
 - Built-in SignalR support for real-time execution updates
