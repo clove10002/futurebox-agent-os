@@ -21,12 +21,24 @@ futurebox-agent-os/
 │   ├── development-workflow.md
 │   └── changelog.md
 │
-├── src/                           ← Core platform source
+├── src/                           ← Core platform source (.NET)
 │   ├── FutureBox.Domain/
 │   ├── FutureBox.Application/
 │   ├── FutureBox.Infrastructure/
-│   ├── FutureBox.Presentation/
+│   ├── FutureBox.Api/             ← ASP.NET Core Minimal APIs + SignalR + Swagger
 │   └── FutureBox.Shared/
+│
+├── futurebox-ui/                  ← React + Vite + Tailwind frontend
+│   ├── src/
+│   │   ├── pages/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   └── services/              ← API client, SignalR client
+│   ├── public/
+│   ├── index.html
+│   ├── vite.config.ts
+│   ├── tailwind.config.ts
+│   └── package.json
 │
 ├── agents/                        ← One project per agent
 │   ├── FutureBox.Agents.Research/
@@ -120,23 +132,42 @@ FutureBox.Infrastructure/
     └── ServiceCollectionExtensions.cs
 ```
 
-### FutureBox.Presentation (Blazor Web App)
+### FutureBox.Api (ASP.NET Core Minimal APIs)
 
 ```
-FutureBox.Presentation/
-├── Components/
-│   ├── App.razor
-│   ├── Layout/
-│   │   ├── MainLayout.razor
-│   │   └── NavMenu.razor
-│   └── Pages/
-│       ├── Dashboard.razor
-│       ├── NewProject.razor
-│       └── ProjectDetail.razor
+FutureBox.Api/
+├── Endpoints/
+│   ├── ProjectEndpoints.cs
+│   └── WorkflowEndpoints.cs
 ├── Hubs/
 │   └── ExecutionHub.cs
 ├── Program.cs
 └── appsettings.json
+```
+
+### futurebox-ui (React + Vite + Tailwind)
+
+```
+futurebox-ui/
+├── src/
+│   ├── pages/
+│   │   ├── NewProject.tsx
+│   │   ├── ExecutionView.tsx
+│   │   └── OutputView.tsx
+│   ├── components/
+│   │   ├── PipelineTracker.tsx
+│   │   ├── LiveLog.tsx
+│   │   └── OutputPanel.tsx
+│   ├── hooks/
+│   │   └── useSignalR.ts
+│   └── services/
+│       ├── apiClient.ts
+│       └── signalRClient.ts
+├── public/
+├── index.html
+├── vite.config.ts
+├── tailwind.config.ts
+└── package.json
 ```
 
 ### FutureBox.Shared

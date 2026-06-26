@@ -24,8 +24,22 @@ Update this file after completing significant milestones or architectural change
 ### Architecture Decisions Recorded
 
 - ADR-001: Clean Architecture with strict dependency rules
-- ADR-002: .NET 9 + Blazor Web App
-- ADR-003: SQLite for MVP, PostgreSQL later
+- ADR-002: .NET 9 backend (Minimal APIs)
+- ADR-003: ~~SQLite for MVP~~ → replaced by ADR-008
 - ADR-004: SignalR as real-time communication layer
 - ADR-005: Separate Agent and Tool concepts
 - ADR-006: Documentation-Driven Development as project workflow
+- ADR-007: Replace Blazor with React + Vite + Tailwind frontend
+- ADR-008: SQL Server as the database (SSMS already installed)
+- ADR-009: ASP.NET Core Minimal APIs over MVC controllers
+
+### Stack Finalized
+
+| Layer | Technology |
+|---|---|
+| Backend | ASP.NET Core Minimal APIs (.NET 9, C#) |
+| API Docs | Swagger / OpenAPI |
+| Real-time | SignalR |
+| Frontend | React + Vite + Tailwind + Font Awesome Free |
+| Database | SQL Server (managed via SSMS) |
+| Deployment | Single server (ASP.NET Core serves React build in production) |

@@ -8,6 +8,117 @@ Add a new entry before introducing a new pattern that will affect the platform l
 
 ---
 
+## ADR-007 — Replace Blazor with React + Vite + Tailwind frontend
+
+**Date:** 2026-06-26
+**Status:** Accepted
+
+### Context
+
+The original frontend was Blazor Web App, chosen for full-stack C# consistency. The decision to use a React-based frontend was raised early in the project before any code was written.
+
+### Problem
+
+Blazor's primary advantage is full-stack C#. If the frontend is decoupled from the backend anyway (separate dev server, API-driven), Blazor provides no meaningful benefit over a dedicated JavaScript frontend framework.
+
+### Options Considered
+
+1. Keep Blazor Web App
+2. React + Vite + Tailwind (API-driven, separate frontend)
+3. Vue or Svelte
+
+### Decision
+
+**React + Vite + Tailwind + Font Awesome Free.**
+
+- React is the industry standard for operations center / dashboard UIs
+- Vite provides fast development builds and hot module replacement
+- Tailwind gives full design control without Bootstrap's opinionated constraints
+- Bootstrap was considered but dropped — it conflicts with Tailwind and adds unnecessary overhead
+- Font Awesome Free provides sufficient iconography for MVP
+
+### Consequences
+
+- Frontend and backend are cleanly separated (different dev servers in development)
+- In production, ASP.NET Core serves the React build as static files — single deployment
+- All real-time updates still flow through SignalR (React uses the SignalR JavaScript client)
+- `FutureBox.Presentation` project renamed to `FutureBox.Api`; UI lives in `futurebox-ui/`
+
+---
+
+## ADR-008 — Replace SQLite/PostgreSQL with SQL Server
+
+**Date:** 2026-06-26
+**Status:** Accepted
+
+### Context
+
+The original plan was SQLite for MVP, PostgreSQL for production. The user has SQL Server Management Studio 18 installed, indicating SQL Server is already available locally.
+
+### Problem
+
+SQLite has limited tooling for inspecting data during development. PostgreSQL requires additional setup (Docker or installation).
+
+### Options Considered
+
+1. SQLite (MVP) → PostgreSQL (production)
+2. SQL Server from day one
+3. PostgreSQL from day one
+
+### Decision
+
+**SQL Server** — used in both development and production.
+
+- Already installed via SSMS — zero additional setup
+- SSMS provides full visual database management (tables, queries, indexes)
+- Entity Framework Core supports SQL Server natively and excellently
+- Consistent database engine across all environments — no SQLite/PostgreSQL drift
+
+### Consequences
+
+- EF Core migrations target SQL Server provider (`Microsoft.EntityFrameworkCore.SqlServer`)
+- Connection string points to local SQL Server instance in development
+- SSMS is used for database inspection and management
+- Repository interfaces remain database-agnostic — switching providers later requires only infrastructure changes
+
+---
+
+## ADR-009 — Use ASP.NET Core Minimal APIs instead of full MVC controllers
+
+**Date:** 2026-06-26
+**Status:** Accepted
+
+### Context
+
+The backend API needs to expose endpoints for the React frontend and generate Swagger documentation automatically.
+
+### Problem
+
+Full MVC controllers add ceremony (controller classes, action methods, routing attributes) that is unnecessary for a focused API.
+
+### Options Considered
+
+1. ASP.NET Core MVC with Controllers
+2. ASP.NET Core Minimal APIs
+3. FastAPI (Python) — evaluated and rejected; no advantage over .NET for this project
+
+### Decision
+
+**ASP.NET Core Minimal APIs (.NET 9).**
+
+- Minimal boilerplate — endpoints defined inline or in extension methods
+- Swagger/OpenAPI generated automatically via `Microsoft.AspNetCore.OpenApi`
+- Same performance as controllers; simpler code
+- FastAPI (Python) was considered but rejected — all AI SDKs needed have .NET clients; switching to Python would abandon the established C# architecture for no net gain
+
+### Consequences
+
+- Endpoints are organized by feature in extension methods (not controller classes)
+- Swagger UI available at `/swagger` in development
+- Backend stays entirely in C# — consistent with domain, application, and infrastructure layers
+
+---
+
 ## ADR-001 — Adopt Clean Architecture with strict dependency rules
 
 **Date:** 2026-06-26  

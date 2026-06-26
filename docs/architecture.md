@@ -12,13 +12,15 @@ No layer may depend on a layer outside of it. All major contracts are interfaces
 
 ```
 ┌──────────────────────────────────────────────┐
-│                 Presentation                 │  Blazor Web App, SignalR Hubs
+│              React + Vite + Tailwind         │  Frontend (separate dev server, served by API in prod)
+├──────────────────────────────────────────────┤
+│         ASP.NET Core Minimal APIs            │  HTTP endpoints, Swagger, SignalR Hubs
 ├──────────────────────────────────────────────┤
 │                 Application                  │  Use cases, Orchestration, Services
 ├──────────────────────────────────────────────┤
 │                   Domain                     │  Entities, Interfaces, Domain Rules
 ├──────────────────────────────────────────────┤
-│                Infrastructure                │  DB, External APIs, Tool Impls
+│                Infrastructure                │  SQL Server, External APIs, Tool Impls
 ├──────────────────────────────────────────────┤
 │                   Shared                     │  DTOs, Enums, Results, Constants
 └──────────────────────────────────────────────┘
@@ -49,20 +51,30 @@ Contains:
 Implements interfaces defined in `Application` and `Domain`. Never referenced by `Domain` or `Application` directly — only through DI.
 
 Contains:
-- Database access (SQLite/PostgreSQL via EF Core or Dapper)
+- Database access (SQL Server via Entity Framework Core)
 - Repository implementations
 - External API clients (AI providers, YouTube API, etc.)
 - Concrete tool implementations (or tool host — tools live in `FutureBox.Tools.*`)
 - Hosted services and background workers
 
-### FutureBox.Presentation
-The Blazor Web App. Depends on `Application` only — never on `Infrastructure` or `Domain` directly beyond shared contracts.
+### FutureBox.Api
+The ASP.NET Core Minimal APIs host. Depends on `Application` only — never on `Infrastructure` or `Domain` directly beyond shared contracts.
 
 Contains:
-- Blazor pages and components
+- Minimal API endpoint definitions
 - SignalR hub registrations
-- ViewModels / page state
+- Swagger / OpenAPI configuration
 - Dependency injection wiring (composition root)
+- Static file serving (React build in production)
+
+### futurebox-ui (React)
+The React frontend. Communicates with `FutureBox.Api` via HTTP and SignalR.
+
+Contains:
+- React + Vite + Tailwind
+- Pages: New Project, Execution View, Output View
+- SignalR client for real-time agent progress
+- Font Awesome Free icons
 
 ### FutureBox.Shared
 Cross-cutting types with no business logic. May be referenced by any layer.
@@ -189,7 +201,7 @@ FutureBox never loses track of generated work.
 
 ## Communication & Real-Time Updates
 
-SignalR is the real-time communication layer between the server and the Blazor UI.
+SignalR is the real-time communication layer between the ASP.NET Core API and the React frontend.
 
 Events emitted to the UI:
 - Agent started / completed / failed
