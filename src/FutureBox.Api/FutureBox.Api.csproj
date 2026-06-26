@@ -3,12 +3,22 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
     <PackageReference Include="Swashbuckle.AspNetCore" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\FutureBox.Application\FutureBox.Application.csproj" />
     <ProjectReference Include="..\FutureBox.Infrastructure\FutureBox.Infrastructure.csproj" />
     <ProjectReference Include="..\FutureBox.Shared\FutureBox.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\agents\FutureBox.Agents.Research\FutureBox.Agents.Research.csproj" />
+    <ProjectReference Include="..\..\agents\FutureBox.Agents.Script\FutureBox.Agents.Script.csproj" />
+    <ProjectReference Include="..\..\agents\FutureBox.Agents.Narration\FutureBox.Agents.Narration.csproj" />
+    <ProjectReference Include="..\..\agents\FutureBox.Agents.Subtitle\FutureBox.Agents.Subtitle.csproj" />
+    <ProjectReference Include="..\..\agents\FutureBox.Agents.Asset\FutureBox.Agents.Asset.csproj" />
+    <ProjectReference Include="..\..\agents\FutureBox.Agents.Video\FutureBox.Agents.Video.csproj" />
   </ItemGroup>
 
 </Project>
